@@ -14,7 +14,7 @@ namespace netCoreAzure.Controllers
         public IEnumerable<string> Get()
         {
             System.Threading.Thread.Sleep(5000);
-            return new string[] { "Fender", "Gibson" };
+            return new string[] { "Fender", "Gibsoan" };
         }
 
         // GET api/values/5
