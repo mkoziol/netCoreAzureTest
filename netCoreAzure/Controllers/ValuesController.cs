@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using netCoreAzure.Data;
 
 namespace netCoreAzure.Controllers
 {
@@ -16,13 +18,22 @@ namespace netCoreAzure.Controllers
             System.Threading.Thread.Sleep(5000);
             return new string[] { "Fender", "Gibsoan" };
         }
-
+        
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public List<tableName> Get(int id)
         {
-            System.Threading.Thread.Sleep(6000);
-            return $"The value you sent was xax123dev6: {id} ";
+            string name = "";
+
+            List<tableName> list= new List<tableName>();
+            using (Context context = new Context())
+            {
+
+                list = context.Users.ToList();
+            }
+
+
+            return list;
         }
     }
 }
