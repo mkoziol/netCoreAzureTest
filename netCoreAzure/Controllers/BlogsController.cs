@@ -19,12 +19,15 @@ namespace netCoreAzure.Controllers
         }
 
         // GET: Blogs
+        [Route("/Blogs/Index")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Blog.ToListAsync());
         }
 
         // GET: Blogs/Details/5
+
+        [Route("/Blogs/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,6 +46,8 @@ namespace netCoreAzure.Controllers
         }
 
         // GET: Blogs/Create
+
+        [Route("/Blogs/Create")]
         public IActionResult Create()
         {
             return View();
@@ -65,6 +70,7 @@ namespace netCoreAzure.Controllers
         }
 
         // GET: Blogs/Edit/5
+        [Route("/Blogs/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -116,6 +122,8 @@ namespace netCoreAzure.Controllers
         }
 
         // GET: Blogs/Delete/5
+
+        [Route("/Blogs/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
