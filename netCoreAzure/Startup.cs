@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using netCoreAzure.Data;
+using netCoreAzure.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace netCoreAzure
 {
@@ -29,9 +30,12 @@ namespace netCoreAzure
         public void ConfigureServices(IServiceCollection services)
         {
 
-            Context.ConnectionString = Configuration.GetConnectionString("MesterBaseEF");
+            //Context.ConnectionString = Configuration.GetConnectionString("MesterBaseEF");
             // Add framework services.
             services.AddMvc();
+
+            var connection = @"Server=masterbase.database.windows.net;Database=masterbase;user id=masterbase;password=1qaz@WSX;";
+            services.AddDbContext<masterbaseContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
